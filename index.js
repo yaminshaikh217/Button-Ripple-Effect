@@ -2,24 +2,18 @@ const Btn = document.querySelectorAll('.rippleBtn')
 
 Btn.forEach(curr => {
     curr.addEventListener("click", function (e) {
-        const x = e.clientX
-        const y = e.clientY
-
-        const buttonTop = e.target.offsetTop
-        const buttonLeft = e.target.offsetLeft
+        const x = e.clientX - e.target.offsetLeft
+        const y = e.clientY - e.target.offsetTop
 
 
-        console.log(buttonTop);
-        console.log(buttonLeft);
-        const xInside = x - buttonLeft
-        const yInside = y - buttonTop
+
 
 
         const circle = document.createElement('span')
         circle.classList.add('circle')
 
-        circle.style.left = yInside + 'px'
-        circle.style.top = xInside + 'px'
+        circle.style.left = x + 'px'
+        circle.style.top = y + 'px'
         this.appendChild(circle)
 
         setTimeout(() => { circle.remove() }, 500)
